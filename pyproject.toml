@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name="create-base-projects"
+version = "0.1.0"
+description = "my first lib"
+authors = [{name="Арсений", email="workmailskr@mail.ru"}]
+dependencies = ["prompt_toolkit"]
+
+[project.scripts]
+project-init = "project-init.__main__:main" 
