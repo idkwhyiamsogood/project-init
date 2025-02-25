@@ -1,0 +1,4 @@
+exclude *
+include README.md
+include project-init/*
+include pyproject.toml
