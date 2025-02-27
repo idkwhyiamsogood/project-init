@@ -22,7 +22,7 @@ def create(project_name: str) -> None:
         f"{project_name}/tests/test_main.py",
         f"{project_name}/.gitignore",
         f"{project_name}/README.md",
-        f"{project_name}/requirements.txt"
+        f"requirements.txt",
     ]
     
     dependecies = [

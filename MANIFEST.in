@@ -1,4 +1,2 @@
-exclude *
 include README.md
-include project-init/*
-include pyproject.toml
+recursive-include project_init *

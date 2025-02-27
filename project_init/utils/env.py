@@ -7,12 +7,11 @@ import shutil
 def create_virtual_environment(env_name: str = ".venv") -> None:
     """Создать виртуальное окружение."""
     if os.path.exists(env_name):
-        print(f"[yellow]Виртуальное окружение '{env_name}' уже существует. Удаляем его...[/yellow]")
-        shutil.rmtree(env_name)
-    
-    print(f"[blue]Создание виртуального окружения '{env_name}'...[/blue]")
-    subprocess.run([sys.executable, '-m', 'venv', env_name], check=True)
-    print(f"[green]Виртуальное окружение '{env_name}' создано.[/green]")
+        print(f"[yellow]Виртуальное окружение '{env_name}' уже существует.[/yellow]")
+    else:
+        print(f"[blue]Создание виртуального окружения '{env_name}'...[/blue]")
+        subprocess.run([sys.executable, '-m', 'venv', env_name], check=True)
+        print(f"[green]Виртуальное окружение '{env_name}' создано.[/green]")
 
 def activate_virtual_environment(env_name: str = ".venv") -> None:
     """Показать команду для активации .venv."""
@@ -21,4 +20,5 @@ def activate_virtual_environment(env_name: str = ".venv") -> None:
     else:
         activation_cmd = f"source {env_name}/bin/activate"
     
+    subprocess.run(f"{env_name}/scripts/activate.bat")
     print(f"[blue]Для активации окружения выполните: {activation_cmd}[/blue]")

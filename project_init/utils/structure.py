@@ -2,7 +2,7 @@ import os
 from rich import print
 
 def create_project_structure(directories: list[str], 
-                             files: list[str], dependecies: list[str]) -> None:
+                             files: list[str], dependencies: list[str]) -> None:
     for directory in directories:
         os.makedirs(directory, exist_ok=True)
         print(f"[blue]Directory created: {directory}[/blue]")
@@ -13,8 +13,8 @@ def create_project_structure(directories: list[str],
         print(f"[blue]Created file: {file}[/blue]")
         
     with open(f"requirements.txt", "w") as f:
-        for dependecy in dependecies:
-            f.write(f"{dependecy}\n")
+        for dependency in dependencies:
+            f.write(f"{dependency}\n")
             
         print("[blue]Created requirements.txt with dependencies.[/blue]")
     

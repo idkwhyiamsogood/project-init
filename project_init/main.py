@@ -22,7 +22,7 @@ app = typer.Typer(
 VALID_VENV_NAMES = (".venv", "venv", ".env", "env")
 
 
-@app.command(name="init-project")
+@app.command(name="init")
 def init_project(
     project_type: str = typer.Option(
         None, "--type", "-t", help="Specify the project type (pyqt or aiogram)"
@@ -84,7 +84,13 @@ def init_venv(
         print(f"[red]Invalid virtual environment name! Choose one of {VALID_VENV_NAMES}[/red]")
         raise typer.Exit(1)
     
-    create_virtual_environment(venv_name)
+    for env in VALID_VENV_NAMES:
+        if os.path.exists(env):
+            venv_name = env
+            break
+        
+    create_virtual_environment(venv_name)    
+        
     if activate:
         activate_virtual_environment(venv_name)
 
@@ -129,6 +135,7 @@ def uninstall(dependencies: Optional[List[str]] = typer.Argument(None, help="Dep
 def freeze() -> None:
     update_requirements()
 
+
 def update_requirements() -> None:
     """
     Updates the requirements.txt file with the current list of installed packages.
@@ -147,7 +154,6 @@ def create_project(project_type: str, project_name: str) -> None:
     else:
         print("[red]Unsupported project type.[/red]")
         raise typer.Exit(1)
-
 
 if __name__ == "__main__":
     app()
